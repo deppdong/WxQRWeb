@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health app</title>
+    <style>
+        html {
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+
+        body {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 1.6;
+            font-family: Lato, sans-serif;
+            letter-spacing: 0px;
+            text-align: left;
+            color: #3b3d42
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            /* background: url('img/slider.jpg') no-repeat;
+            background-size: 100% 90%; */
+            background-color: #f6f6f6;
+        }
+
+        .right-img {
+            position: absolute;
+            right: 18%;
+            top: 5%;
+        }
+
+        .code-img {
+            width: 240px;
+            height: 480px;
+        }
+
+        .app-name {
+            position: absolute;
+            font-size: 30px;
+            font-weight: 600;
+            left: 18%;
+            top: 5%;
+            font-family: "Poppins", Sans-serif;
+        }
+
+        .footer {
+            position: absolute;
+            background-color: #444548;
+            width: 100%;
+            height: 10%;
+            bottom: 0;
+            text-align: center;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .content {
+            position: absolute;
+            left: 18%;
+            top: 25%;
+            z-index: 100;
+        }
+
+        .title-cn {
+            text-align: left;
+            color: #151515;
+            font-family: "Poppins", Sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 2.6px;
+            margin-bottom: 20px;
+        }
+
+        .title-en {
+            align-self: flex-start;
+            text-align: left;
+            color: #151515;
+            font-family: "Poppins", Sans-serif;
+            font-size: 18;
+            font-weight: 300;
+            letter-spacing: 2.7px;
+        }
+
+        .user-agreement-btn {
+            font-size: 13px;
+            text-align: left;
+            color: rgb(69, 69, 207);
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .button-box {
+            text-align: center;
+            width: 100%;
+        }
+
+        .btn {
+            font-family: "Poppins", Sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 21px 52px 21px 52px;
+            background-color: #d7211e;
+            border-radius: 10px 10px 10px 10px;
+            box-shadow: 2px 4px 7px 0px rgb(0 0 0 / 24%);
+            position: static;
+            color: #fff;
+            fill: #fff;
+            display: inline-block;
+            line-height: 1;
+            text-decoration: none;
+            margin: 20px 5px;
+        }
+
+        .btn-confirm {
+            font-family: "Poppins", Sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 10px 20px;
+            background-color: #f44336;
+            border-radius: 4px;
+            box-shadow: 2px 4px 7px 0px rgb(0 0 0 / 24%);
+            position: static;
+            color: #fff;
+            fill: #fff;
+            display: inline-block;
+            line-height: 1;
+            text-decoration: none;
+            margin: 20px 5px;
+            cursor: pointer;
+        }
+
+        .copyright {
+            width: 100%;
+        }
+
+        .registration {
+            width: 100%;
+        }
+
+        .show-agreement {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(118, 113, 113, 0.4);
+            z-index: 1000;
+        }
+
+        .agreement-content {
+            position: absolute;
+            width: 50%;
+            height: 80%;
+            left: 50%;
+            top: 5%;
+            transform: translate(-50%, 0);
+            overflow: hidden;
+            background: #f8f8f8;
+        }
+
+        .content-word {
+            height: 80%;
+            margin: 15px 20px 20px 20px;
+            border: 2px solid #e7e7e7;
+        }
+
+        .words {
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            overflow: auto;
+            box-sizing: border-box;
+        }
+
+        .cancel-box {
+            width: 100%;
+            height: 30px;
+            text-align: right;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            background-color: #f3f3f3;
+        }
+
+        .cancel-box span {
+            width: 20px;
+            height: 20px;
+            background: url('img/cancel.png') no-repeat;
+            background-size: 100% 100%;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        ::-webkit-scrollbar {
+            /*滚动条整体样式*/
+            width: 4px;
+            /*高宽分别对应横竖滚动条的尺寸*/
+            height: 1px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            /*滚动条里面小方块*/
+            border-radius: 10px;
+            box-shadow: inset 0 0 5px rgba(97, 184, 179, 0.1);
+            background: #78b4b4;
+        }
+
+        ::-webkit-scrollbar-track {
+            /*滚动条里面轨道*/
+            box-shadow: inset 0 0 5px rgba(87, 175, 187, 0.1);
+            border-radius: 10px;
+            background: #ededed;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="app-name">
+            快速亮码
+        </div>
+        <div class="content">
+            <p class="title-cn">此APP为用户打造快速打开健康码服务</p>
+            <p class="title-cn">方便亮码检索，提高生活便利性</p>
+            <p class="title-en">For users to quickly open the health code</p>
+            <p class="title-en">improve the convenience of life</p>
+            <div class="user-agreement-btn" onclick="showAgreement()">用户协议</div>
+            <div class="button-box">
+                <a class="btn" href="http://quick-qr.work/download/qrhealth.apk">下载</a>
+            </div>
+        </div>
+        <div class="right-img">
+            <img class="code-img" src="./img/bg1.jpg" alt="">
+            <img class="code-img" src="./img/bg2.jpg" alt="">
+        </div>
+    </div>
+    <footer class="footer">
+        <p class="copyright">Copyright © 2022</p>
+        <p class="registration">粤ICP备2022117947号-1</p>
+    </footer>
+    <!-- 用户协议 -->
+    <div class="show-agreement" style="display: none;">
+        <div class="agreement-content">
+            <div class="cancel-box">
+                <span onclick="closeAgreement()"></span>
+            </div>
+            <div class="content-word">
+                <div class="words">
+                    <h3 style="text-align: center;margin-bottom: 5px;">用户协议</h3>
+                    尊敬的用户，在使用前请您阅读如下服务协议，使用本应用即表示您同意接受本协议，本协议产生法律效力，特别涉及免除或者限制中其责任的条款，请仔细阅读。如有任何问题，可向中其信息咨询。
+                    <br>
+                    1. 服务条款的确认和接受
+                    <br>
+                    通过访问或使用本应用，表示用户同意接受本协议的所有条件和条款。
+                    <br>
+                    2. 服务条款的变更和修改
+                    <br>
+                    在必要时修改服务条款，服务条款一旦发生变更，将会在重要页面上提示修改内容。如果不同意所改动的内容，用户可以放弃获得的本应用信息服务。如果用户继续享用本应用的信息服务，则视为接受服务条款的变更。本应用保留随时修改或中断服务而不需要通知用户的权利。本应用行使修改或中断服务的权利，不需对用户或第三方负责。
+                    <br>
+                    3. 用户行为
+                    <br>
+                    用户账号、密码和安全
+                    <br>
+                    您无需注册登录账号即可使用我司产品功能。
+                    <br>
+                    4. 服务内容
+                    <br>
+                    本服务的具体内容根据实际情况提供，我司可以对其提供的服务予以变更，且提供的服务内容可能随时变更。该软件属于免费应用，用户使用过程中，本软件不会以任何方式、名义收取任何费用。
+                    <br>
+                    隐私条款
+                    <br>
+                    1.用户信息公开情况说明
+                    <br>
+                    尊重用户个人隐私是我司的一项基本政策。所以，不会在未经合法用户授权时公开、编辑或透露其保存在本应用中的非公开内容，除非有下列情况：
+                    <br>
+                    （1）有关法律规定或合法服务程序规定；
+                    <br>
+                    （2）在紧急情况下，为维护用户及公众的权益；
+                    <br>
+                    （3）为维护商标权、专利权及其他任何合法权益；
+                    <br>
+                    （4）其他需要公开、编辑或透露个人信息的情况；
+                    <br>
+                    在以下（包括但不限于）几种情况下，我司有权使用用户的个人信息：
+                    <br>
+                    （1）在进行促销或抽奖时，我司可能会与赞助商共享用户的个人信息，在这些情况下使用用户信息之前进行提示，并且用户可以通过不参与来终止传送过程；
+                    <br>
+                    （3）用户统计数据，我司向未来的合作伙伴、广告商及其他第三方以及为了其他合法目的而描述中其信息的服务；
+                    <br>
+                    2.隐私权政策适用范围
+                    <br>
+                    （1）用户在使用本应用服务器时留下的个人身份信息；
+                    <br>
+                    （2）用户通过本应用服务器与其他用户或非用户之间传送的各种资讯；
+                    <br>
+                    （3）本应用与商业伙伴共享的其他用户或非用户的各种信息；
+                    <br>
+                    （4）我们十分注重保护用户的个人隐私，并制定了《隐私政策》，用户亦可以通过《隐私政策》，用户确认并同意被视为接受《隐私政策》。
+                    <br>
+                    3.资讯公开与共享
+                    <br>
+                    其中信息不会将用户的个人信息和资讯故意透露、出租或出售给任何第三方。但以下情况除外：
+                    <br>
+                    （1）用户本人同意与第三方共享信息和资讯;
+                    <br>
+                    （2）只有透露用户的个人信息和资讯，才能提供用户所要求的某种产品和服务;
+                    <br>
+                    （3）应代表本应用提供产品或服务的主体的要求提供（除非我们另行通知，否则该等主体无权将相关用户个人信息和资讯用于提供产品和服务之外的其他用途）：根据法律法规或行政命令的要求提供;因外部审计需要而提供;用户违反了本应用服务条款或任何其他产品及服务的使用规定;经本站评估，用户的帐户存在风险，需要加以保护。
+                    <br>
+                    4.非个人隐私信息
+                    <br>
+                    为了改善软件的技术和服务，向用户提供更好的服务体验，软件可能会自行收集使用或向第三方提供用户的非个人隐私信息。
+                </div>
+                <div class="button-box">
+                    <div class="btn-confirm" onclick="closeAgreement()">确 定</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
+
+<script>
+    let agreement = document.querySelector('.show-agreement')
+    let showAgreement = () => {
+        agreement.style.display = 'block'
+    }
+    let closeAgreement = () => {
+        agreement.style.display = 'none'
+    }
+    document.onkeydown = (event) => {
+        event = event || window.event;
+        if (event.keyCode == 27) {
+            agreement.style.display == 'block' && (agreement.style.display = 'none')
+        }
+    }
+</script>
